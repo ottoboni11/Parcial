@@ -43,6 +43,12 @@ def cargar_pacientes(pacientes):
     return pacientes
 
 def mostrar_pacientes(pacientes):
+    '''
+    Muestra los pacientes primero revisando si la lista posee algun paciente((Revisa si es TRUE o FALSE))
+    Luego mediante un for printea cada paciente con el formato aclarado.
+    En caso de no haber ningun paciente, dara el aviso.
+    '''
+
     if pacientes:
         print("\nPacientes internados: ")
         for paciente in pacientes:
@@ -51,17 +57,31 @@ def mostrar_pacientes(pacientes):
         print("No hay ningun paciente ingresado aun.")
 
 def buscar_pacientes(pacientes, n_historia):
-
+    '''
+    Mediante un for recorre la lista de pacientes corroborando que el numero de historia clinica sea igual al ingresado mediante un input.
+    Se corrobora indicando el indice que en este caso es 0 donde se encuentran los N° de historia clinica.
+    En caso de no haber coincidencias, retorna NONE y asi nos dara el aviso de que no hay coincidencias.
+    '''
     for paciente in pacientes:
         if paciente[0] == n_historia:
             return paciente
     return None
 
 def ordenar_pacientes(pacientes):
+    '''
+    Algoritmo de ordenamiento bubble sorting con desempaquetamiento.
+    Al principio funcionaba pero nose que cambié en el codigo y ahora me sobreescribe la lista cada vez que lo uso, me gustaria saber cual fue el error :(
+
+    '''
+
     for i in range(len(pacientes)):
         for j in range(0, len(pacientes) - i - 1):
             if pacientes[j][0] > pacientes[j + 1][0]:
-                pacientes[j], pacientes[j + 1] = pacientes[j + 1], pacientes[j]
+                pacientes[j], pacientes[j + 1] = pacientes[j + 1], pacientes[j] 
+                #Esto se podria reemplazar con auxiliares de la siguiente manera.
+                # aux = pacientes[j]
+                # pacientes[j] = pacientes[j + 1]
+                # pacientes[j + 1] = aux
 
     print("\n Pacientes ordenados por N° de Historia clinica de manera ascendente.")
 
